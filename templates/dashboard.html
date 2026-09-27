@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - AI Security Auth</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">AI Security Auth</div>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+            <a href="{{ url_for('security_events') }}">Security Events</a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <h1>Welcome, {{ username }}</h1>
+        
+        <div class="dashboard-grid">
+            <div class="card status-card">
+                <h3>Authentication</h3>
+                <div class="status success">SUCCESS</div>
+                
+                <h3>Current Login Risk</h3>
+                <div class="status risk-{{ current_risk|lower }}">{{ current_risk }}</div>
+                
+                <p><strong>Anomaly Score:</strong> {{ "%.4f"|format(anomaly_score) }}</p>
+            </div>
+            
+            <div class="card summary-card">
+                <h3>Security Summary</h3>
+                <ul>
+                    <li><strong>Total logins:</strong> {{ total_logins }}</li>
+                    <li><strong>Suspicious logins:</strong> <span class="{% if suspicious_logins > 0 %}text-danger{% endif %}">{{ suspicious_logins }}</span></li>
+                    <li><strong>Failed attempts:</strong> <span class="{% if failed_attempts > 0 %}text-warning{% endif %}">{{ failed_attempts }}</span></li>
+                    <li><strong>Known device status:</strong> {% if current_risk == 'HIGH' %}Unfamiliar{% else %}Verified{% endif %}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card table-card">
+            <h3>Recent Login Activity</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Risk Level</th>
+                        <th>Score</th>
+                        <th>Device</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for login in recent_logins %}
+                    <tr>
+                        <td>{{ login.timestamp }}</td>
+                        <td><span class="badge badge-{{ login.risk_level|lower }}">{{ login.risk_level }}</span></td>
+                        <td>{{ "%.4f"|format(login.risk_score) }}</td>
+                        <td>{{ login.device_type }}</td>
+                        <td>Logged In</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

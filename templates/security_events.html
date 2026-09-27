@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Events - AI Security Auth</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">AI Security Auth</div>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('security_events') }}" class="active">Security Events</a>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <h2>Security Events</h2>
+        <p>This page displays logins flagged as MEDIUM or HIGH risk by our behavioral anomaly detection model.</p>
+        
+        {% if events %}
+            <div class="events-list">
+                {% for item in events %}
+                <div class="card alert-card risk-{{ item.event.risk_level|lower }}">
+                    <div class="alert-header">
+                        <h3>SECURITY ALERT: Suspicious login detected</h3>
+                        <span class="badge badge-{{ item.event.risk_level|lower }}">{{ item.event.risk_level }} RISK</span>
+                    </div>
+                    <div class="alert-body">
+                        <p><strong>Time:</strong> {{ item.event.timestamp }}</p>
+                        <p><strong>Anomaly Score:</strong> {{ "%.4f"|format(item.event.risk_score) }}</p>
+                        
+                        <div class="alert-factors">
+                            <h4>Potential Contributing Factors:</h4>
+                            <ul>
+                                {% if item.event.new_device %}
+                                <li><strong>Device:</strong> New/Unfamiliar device ({{ item.features.get('device_type', 'Unknown') }})</li>
+                                {% endif %}
+                                {% if item.event.new_ip %}
+                                <li><strong>Network:</strong> Unfamiliar connection pattern detected</li>
+                                {% endif %}
+                                {% if item.event.new_location %}
+                                <li><strong>Location:</strong> Deviation (SIMULATED_DEMO_FEATURE: {{ "%.1f"|format(item.features.get('distance_from_usual_location_km', 0)) }} km jump)</li>
+                                {% endif %}
+                                {% if item.features.get('failed_attempts', 0) > 0 %}
+                                <li><strong>Prior Failed Attempts:</strong> {{ item.features.get('failed_attempts') }}</li>
+                                {% endif %}
+                                {% if item.features.get('login_hour') %}
+                                <li><strong>Hour:</strong> {{ item.features.get('login_hour') }}:00</li>
+                                {% endif %}
+                                
+                                {% if not item.event.new_device and not item.event.new_ip and not item.event.new_location %}
+                                <li>No simple threshold crossed. Flagged due to a multivariate combination of ordinary features.</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card">
+                <p>No suspicious events detected on your account.</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

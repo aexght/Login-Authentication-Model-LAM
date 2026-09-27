@@ -1,0 +1,19 @@
+category,n_events,detection_rate_recall
+unusual_hour,272,0.6066
+unusual_day,250,0.58
+short_gap,243,0.6132
+high_frequency,250,1.0
+high_failed_attempts,244,0.6475
+sudden_failed_attempts_increase,294,0.6565
+new_device,246,0.9065
+unusual_device_browser_combo,288,0.6215
+device_switch,264,0.5795
+new_ip,277,0.6606
+new_location,277,0.7762
+large_distance,266,0.9699
+impossible_travel,248,1.0
+session_anomaly,289,0.7128
+single-signal (k=1),675,0.3348
+exactly-2-signal (k=2),480,0.6271
+3+ signal (k=3-7),503,0.8986
+ALL anomalies (overall recall),1658,0.5905

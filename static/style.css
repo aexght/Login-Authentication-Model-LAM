@@ -1,0 +1,210 @@
+:root {
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --card-bg: #fff;
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.main-content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.nav-brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 4px;
+}
+
+.logout-btn {
+    background-color: var(--danger-color);
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+/* Dashboard Cards */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.status-card h3 {
+    margin-top: 0;
+}
+
+.status {
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.success { background-color: #e8f8f5; color: var(--success-color); }
+.risk-low { background-color: #e8f8f5; color: var(--success-color); }
+.risk-medium { background-color: #fef5e7; color: var(--warning-color); }
+.risk-high { background-color: #fdedf0; color: var(--danger-color); border: 1px solid var(--danger-color); }
+
+/* Alerts & Badges */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-success { background-color: #e8f8f5; color: var(--success-color); border-left: 4px solid var(--success-color); }
+.alert-danger { background-color: #fdedf0; color: var(--danger-color); border-left: 4px solid var(--danger-color); }
+.alert-warning { background-color: #fef5e7; color: var(--warning-color); border-left: 4px solid var(--warning-color); }
+.alert-info { background-color: #ebf5fb; color: var(--secondary-color); border-left: 4px solid var(--secondary-color); }
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-low { background-color: #e8f8f5; color: var(--success-color); }
+.badge-medium { background-color: #fef5e7; color: var(--warning-color); }
+.badge-high { background-color: #fdedf0; color: white; background: var(--danger-color); }
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f9f9f9;
+    color: var(--primary-color);
+}
+
+/* Security Alerts Page */
+.alert-card {
+    margin-bottom: 20px;
+    border-left: 5px solid;
+}
+
+.alert-card.risk-high {
+    border-color: var(--danger-color);
+}
+.alert-card.risk-medium {
+    border-color: var(--warning-color);
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.alert-header h3 {
+    margin: 0;
+    color: var(--danger-color);
+}
+
+.text-danger { color: var(--danger-color); font-weight: bold; }
+.text-warning { color: var(--warning-color); font-weight: bold; }

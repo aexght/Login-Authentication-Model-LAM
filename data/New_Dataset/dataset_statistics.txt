@@ -1,0 +1,143 @@
+LOGIN BEHAVIOR DATASET — STATISTICAL SUMMARY
+==================================================
+Total users: 500
+Total events: 112131
+
+Events per user:
+  mean:   224.26
+  median: 215.50
+  min:    40
+  max:    459
+
+Anomaly rate: 8275 / 112131 = 7.38%
+
+Failed-attempt distribution:
+failed_attempts
+0    103101
+1      6595
+2       538
+3       897
+4       335
+5       330
+6       335
+
+Login-hour distribution (0-23):
+login_hour
+0     2492
+1     2473
+2     2534
+3     2932
+4     2961
+5     3378
+6     5035
+7     6705
+8     7017
+9     5915
+10    4451
+11    3602
+12    3744
+13    4320
+14    4756
+15    4889
+16    4688
+17    5202
+18    6469
+19    7258
+20    7261
+21    6187
+22    4581
+23    3281
+
+Device distribution:
+device_type
+Laptop     29889
+Mobile     29485
+Tablet     28135
+Desktop    24622
+
+Browser distribution:
+browser
+Chrome              42382
+Safari              32089
+Edge                15468
+Firefox             14170
+Samsung Internet     8022
+
+Session duration statistics (minutes):
+count    112131.000000
+mean         28.029292
+std          19.463829
+min           0.200000
+25%          16.200000
+50%          26.900000
+75%          37.600000
+max         299.900000
+
+Distance-from-usual-location statistics (km):
+count    112131.000000
+mean         41.065945
+std         266.879121
+min           0.000000
+25%           1.050000
+50%           2.810000
+75%           6.450000
+max        2999.120000
+
+login_frequency_1h statistics:
+count    112131.000000
+mean          1.259152
+std           0.630735
+min           1.000000
+25%           1.000000
+50%           1.000000
+75%           1.000000
+max          10.000000
+
+login_frequency_6h statistics:
+count    112131.000000
+mean          1.660709
+std           1.154430
+min           1.000000
+25%           1.000000
+50%           1.000000
+75%           2.000000
+max          15.000000
+
+login_frequency_24h statistics:
+count    112131.000000
+mean          2.391836
+std           1.957050
+min           1.000000
+25%           1.000000
+50%           2.000000
+75%           3.000000
+max          24.000000
+
+login_frequency_7d statistics:
+count    112131.000000
+mean          8.023562
+std           4.916934
+min           1.000000
+25%           5.000000
+50%           7.000000
+75%          10.000000
+max          56.000000
+
+Anomaly subtype counts (single-cause anomalies only):
+anomaly_type
+high_failed_attempts               269
+new_ip                             258
+unusual_hour                       248
+unusual_day                        246
+new_location                       240
+unusual_device_browser_combo       240
+high_frequency                     237
+short_gap                          237
+large_distance                     233
+new_device                         233
+device_switch                      233
+impossible_travel                  231
+session_anomaly                    227
+sudden_failed_attempts_increase    208
+
+Multi-signal anomalies (2+ combined causes): 0

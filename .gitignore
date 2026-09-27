@@ -1,0 +1,25 @@
+﻿__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+venv/
+env/
+*.db
+.env
+flask_session/
+/dataset_description.md
+/generate_dataset.py
+/dataset_statistics.txt
+/ground_truth.csv
+/login_behavior_dataset.csv
+data/dataset_description.md
+data/dataset_statistics.txt
+data/generate_dataset.py
+data/ground_truth.csv
+data/login_behavior_dataset.csv
+data/files/
+results/
+.idea/
+.vscode/
+data/v1_vs_v2-test result/*.pkl
+data/v2_hyperparameter_tuning/models/
